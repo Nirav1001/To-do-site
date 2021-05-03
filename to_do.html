@@ -143,7 +143,9 @@
                 background: url(loading.gif) no-repeat;
                 z-index: 10000;
             }
-        }
+            #menu1>li:last-child {
+                float: right;
+            }
     </style>
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -181,7 +183,7 @@
     </script>
 
     <div class="menu">
-        <ul>
+        <ul id="menu1">
             <li> <a href="#"><i class="fa fa-home"></i>Home</a></li>
             <li> <a href="#" onclick="Read()"><i class="fa fa-user"></i>Profile</a></li>
             <!-- <li> <a href="#"><i class="fa fa-phone"></i>Logout</a></li> -->
@@ -189,6 +191,13 @@
             <li><button type="button" id="custom1" onclick="theme(this.id)"></button></li>
             <li><button type="button" id="custom2" onclick="theme(this.id)"></button></li>
             <li><button type="button" id="custom3" onclick="theme(this.id)"></button></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li><a href="feedback.html">Feedback</a></li>
         </ul>
     </div>
     <div class="container">
@@ -226,5 +235,4 @@
 </body>
 <script src="to_do1.js"></script>
 <script src="signup.js"></script>
-
 </html>

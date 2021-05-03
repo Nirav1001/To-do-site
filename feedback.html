@@ -1,0 +1,182 @@
+<html>
+
+<head>
+    <title>Angular JS Forms</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid rgb(0, 0, 0);
+            border-collapse: collapse;
+            padding: 5px;
+        }
+
+        table tr:nth-child(odd) {
+            background-color: #aebdb8;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #caf1d9;
+        }
+
+        form {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1 {
+            text-align: center;
+            color: rgb(0, 0, 0);
+            margin-top: 70px;
+            font-size: 50px;
+
+        }
+
+        body {
+            color: rgb(0, 0, 0);
+            margin: 0px;
+            padding: 0px;
+            background: url('photo.jpeg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        td {
+            width: 250px;
+            height: 50px;
+        }
+
+        #btn {
+            margin: auto;
+            display: block;
+            border-radius: 10px;
+            height: 30px;
+            width: 60px;
+            font-weight: bold;
+        }
+
+        table,
+        tr,
+        td {
+            border: 3px solid rgb(0, 0, 0);
+            border-collapse: collapse;
+        }
+
+        table {
+            border-radius: 10px;
+        }
+
+        textarea {
+            height: 70px;
+            width: 177px;
+            resize: none;
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1><b><u>FeedBack Form</b></u></h1>
+    <div ng-app="mainApp" ng-controller="studentController">
+
+        <form name="feedbackForm" novalidate>
+            <table id="bodar">
+                <tr>
+                    <td>Enter Name :</td>
+                    <td><input id="hh" name="name" type="text" ng-model="Name" required>
+                        <span style="color:red" ng-show="feedbackForm.name.$dirty && feedbackForm.name.$invalid">
+                            <span ng-show="feedbackForm.name.$error.required">First Name is required.</span>
+                        </span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Enter Mobile Number : </td>
+                    <td><input name="number" type="tel" ng-model="number" required>
+                        <span style="color:red" ng-show="feedbackForm.number.$dirty && feedbackForm.number.$invalid">
+                            <span ng-show="feedbackForm.number.$error.required">Mobile Number is required.</span>
+                            <span ng-show="feedbackForm.number.$error.tel">Invalid phone number.</span>
+                        </span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Email : </td>
+                    <td><input name="email" type="email" ng-model="email" length="100" required>
+                        <span style="color:red" ng-show="feedbackForm.email.$dirty && feedbackForm.email.$invalid">
+                            <span ng-show="feedbackForm.email.$error.required">Email is required.</span>
+                            <span ng-show="feedbackForm.email.$error.email">Invalid email address.</span>
+                        </span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>FeedBack :</td>
+                    <td><textarea name="feedback" type="text" ng-model="feedback" length="500" required> </textarea>
+                        <span style="color:red"
+                            ng-show="feedbackForm.feedback.$dirty && feedbackForm.feedback.$invalid">
+                            <span ng-show="feedbackForm.feedback.$error.required">Character is required.</span>
+                        </span>
+                    </td>
+                </tr>
+
+
+
+
+                <tr>
+                    <td>
+                        <button ng-click="reset()" id="btn">Reset</button>
+                    </td>
+                    <td>
+                        <button ng-disabled="feedbackForm.name.$dirty &&
+                        feedbackForm.name.$invalid   || feedbackForm.number.$dirty &&
+                        feedbackForm.number.$invalid || feedbackForm.email.$dirty &&
+                        feedbackForm.email.$invalid || feedbackForm.feedback.$dirty &&
+                        feedbackForm.feedback.$invalid" input type="submit" value="Submit" id="btn"
+                            ng-click="clicking()">Submit</button>
+                    </td>
+                </tr>
+
+            </table>
+        </form>
+    </div>
+
+    <script>
+        var mainApp = angular.module("mainApp", []);
+
+        mainApp.controller('studentController', function ($scope) {
+            $scope.Name = "";
+            $scope.number = "";
+            $scope.email = "";
+            $scope.feedback = "";
+
+
+            $scope.reset = function () {
+                $scope.Name = "";
+                $scope.number = "";
+                $scope.email = "";
+                $scope.feedback = "";
+            }
+
+            $scope.clicking = function () {
+                window.alert("Your Feedback has been stored...");
+                $scope.reset();
+                // $scope.Name = "";
+                // $scope.number = "";
+                // $scope.email = "";
+                // $scope.feedback = "";
+            }
+
+            $scope.reset();
+        });
+    </script>
+
+</body>
+
+</html>
